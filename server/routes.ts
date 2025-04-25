@@ -1,9 +1,10 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { registrationSchema } from "@shared/schema";
+import { registrationSchema, enrollmentSchema } from "@shared/schema";
 import { z } from "zod";
 import { ZodError } from "zod";
+import pool from "./db";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Registration endpoint
@@ -47,6 +48,47 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(500).json({
         message: "Internal server error",
       });
+    }
+  });
+
+  // Enrollment endpoint
+  app.post("/api/enroll", async (req, res) => {
+    try {
+      const validatedData = enrollmentSchema.parse(req.body);
+      
+      // Insert into MySQL database
+      const [result] = await pool.execute(
+        'INSERT INTO enrollments (name, email, phone, organization, job_title, course_title, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [
+          validatedData.name,
+          validatedData.email,
+          validatedData.phone,
+          validatedData.organization,
+          validatedData.jobTitle,
+          validatedData.courseTitle,
+          new Date().toISOString()
+        ]
+      );
+      
+      console.log('Enrollment saved:', result);
+      
+      res.status(201).json({
+        message: "Enrollment successful",
+        data: { id: result.insertId, ...validatedData }
+      });
+    } catch (error) {
+      if (error instanceof ZodError) {
+        res.status(400).json({
+          message: "Validation error",
+          errors: error.errors,
+        });
+      } else {
+        console.error("Enrollment error:", error);
+        res.status(500).json({
+          message: "Internal server error",
+          details: error.message
+        });
+      }
     }
   });
 

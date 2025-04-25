@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -16,11 +16,11 @@ export default function Header() {
   };
 
   const menuItems = [
-    { label: "Home", href: "#" },
-    { label: "Courses", href: "#courses", hasDropdown: true },
-    { label: "About", href: "#about" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Contact", href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "Courses", href: "#", hasDropdown: true },
+    { label: "About", href: "/about" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Contact", href: "/contact" },
   ];
   
   const courseItems = [
@@ -76,12 +76,12 @@ export default function Header() {
                   )}
                 </div>
               ) : (
-                <a 
+                <Link 
                   href={item.href} 
                   className="text-dark hover:text-primary font-medium"
                 >
                   {item.label}
-                </a>
+                </Link>
               )}
             </div>
           ))}

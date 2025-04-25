@@ -1,10 +1,8 @@
 import { users, type User, type InsertUser } from "@shared/schema";
 import { type Registration } from "@shared/schema";
 
-// modify the interface with any CRUD methods
-// you might need
-
 export interface IStorage {
+  createEnrollment(enrollment: Omit<Enrollment, "id">): Promise<Enrollment>;
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
@@ -15,14 +13,18 @@ export interface IStorage {
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
   private registrations: Map<number, Registration>;
-  currentUserId: number;
-  currentRegistrationId: number;
+  private enrollments: Map<number, Enrollment>;
+  private currentUserId: number;
+  private currentRegistrationId: number;
+  private currentEnrollmentId: number;
 
   constructor() {
     this.users = new Map();
     this.registrations = new Map();
+    this.enrollments = new Map();
     this.currentUserId = 1;
     this.currentRegistrationId = 1;
+    this.currentEnrollmentId = 1;
   }
 
   async getUser(id: number): Promise<User | undefined> {
@@ -51,6 +53,13 @@ export class MemStorage implements IStorage {
 
   async getAllRegistrations(): Promise<Registration[]> {
     return Array.from(this.registrations.values());
+  }
+
+  async createEnrollment(enrollmentData: Omit<Enrollment, "id">): Promise<Enrollment> {
+    const id = this.currentEnrollmentId++;
+    const enrollment: Enrollment = { ...enrollmentData, id };
+    this.enrollments.set(id, enrollment);
+    return enrollment;
   }
 }
 
