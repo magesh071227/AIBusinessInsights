@@ -1,0 +1,76 @@
+[root@ip-172-31-12-121 ~]# git clone https://github.com/magesh071227/AIBusinessInsights.git
+Cloning into 'AIBusinessInsights'...
+remote: Enumerating objects: 129, done.
+remote: Counting objects: 100% (129/129), done.
+remote: Compressing objects: 100% (107/107), done.
+remote: Total 129 (delta 22), reused 127 (delta 20), pack-reused 0 (from 0)
+Receiving objects: 100% (129/129), 965.31 KiB | 5.48 MiB/s, done.
+Resolving deltas: 100% (22/22), done.
+[root@ip-172-31-12-121 ~]# ls
+AIBusinessInsights
+[root@ip-172-31-12-121 ~]# cd AIBusinessInsights/
+[root@ip-172-31-12-121 AIBusinessInsights]# ls
+client           dist               generated-icon.png  package.json       server  tailwind.config.ts  vite.config.ts
+components.json  drizzle.config.ts  package-lock.json   postcss.config.js  shared  tsconfig.json
+[root@ip-172-31-12-121 AIBusinessInsights]# npm install
+-bash: npm: command not found
+[root@ip-172-31-12-121 AIBusinessInsights]# yum install npm
+Last metadata expiration check: 0:01:58 ago on Fri Apr 25 21:05:11 2025.
+Dependencies resolved.
+=================================================================================================================================================================
+ Package                               Architecture                Version                                                Repository                        Size
+=================================================================================================================================================================
+Installing:
+ nodejs-npm                            x86_64                      1:10.8.2-1.18.20.6.1.amzn2023.0.2                      amazonlinux                      1.9 M
+Installing dependencies:
+ libbrotli                             x86_64                      1.0.9-4.amzn2023.0.2                                   amazonlinux                      315 k
+ nodejs                                x86_64                      1:18.20.6-1.amzn2023.0.2                               amazonlinux                       13 M
+ nodejs-libs                           x86_64                      1:18.20.6-1.amzn2023.0.2                               amazonlinux                       14 M
+Installing weak dependencies:
+ nodejs-docs                           noarch                      1:18.20.6-1.amzn2023.0.2                               amazonlinux                      7.8 M
+ nodejs-full-i18n                      x86_64                      1:18.20.6-1.amzn2023.0.2                               amazonlinux                      8.4 M
+
+Transaction Summary
+=================================================================================================================================================================
+Install  6 Packages
+
+Total download size: 45 M
+Installed size: 224 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/6): libbrotli-1.0.9-4.amzn2023.0.2.x86_64.rpm                                                                                 7.5 MB/s | 315 kB     00:00    
+(2/6): nodejs-18.20.6-1.amzn2023.0.2.x86_64.rpm                                                                                   36 MB/s |  13 MB     00:00    
+(3/6): nodejs-docs-18.20.6-1.amzn2023.0.2.noarch.rpm                                                                              16 MB/s | 7.8 MB     00:00    
+(4/6): nodejs-full-i18n-18.20.6-1.amzn2023.0.2.x86_64.rpm                                                                         17 MB/s | 8.4 MB     00:00    
+(5/6): nodejs-npm-10.8.2-1.18.20.6.1.amzn2023.0.2.x86_64.rpm                                                                      15 MB/s | 1.9 MB     00:00    
+(6/6): nodejs-libs-18.20.6-1.amzn2023.0.2.x86_64.rpm                                                                              36 MB/s |  14 MB     00:00    
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                             58 MB/s |  45 MB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                         1/1 
+  Installing       : nodejs-docs-1:18.20.6-1.amzn2023.0.2.noarch                                                                                             1/6 
+  Installing       : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                                                                                                   2/6 
+  Installing       : nodejs-libs-1:18.20.6-1.amzn2023.0.2.x86_64                                                                                             3/6 
+  Installing       : nodejs-full-i18n-1:18.20.6-1.amzn2023.0.2.x86_64                                                                                        4/6 
+  Installing       : nodejs-npm-1:10.8.2-1.18.20.6.1.amzn2023.0.2.x86_64                                                                                     5/6 
+  Installing       : nodejs-1:18.20.6-1.amzn2023.0.2.x86_64                                                                                                  6/6 
+  Running scriptlet: nodejs-1:18.20.6-1.amzn2023.0.2.x86_64                                                                                                  6/6 
+INFO: registered node-18 in the alternatives
+
+  Verifying        : libbrotli-1.0.9-4.amzn2023.0.2.x86_64                                                                                                   1/6 
+  Verifying        : nodejs-1:18.20.6-1.amzn2023.0.2.x86_64                                                                                                  2/6 
+  Verifying        : nodejs-docs-1:18.20.6-1.amzn2023.0.2.noarch                                                                                             3/6 
+  Verifying        : nodejs-full-i18n-1:18.20.6-1.amzn2023.0.2.x86_64                                                                                        4/6 
+  Verifying        : nodejs-libs-1:18.20.6-1.amzn2023.0.2.x86_64                                                                                             5/6 
+  Verifying        : nodejs-npm-1:10.8.2-1.18.20.6.1.amzn2023.0.2.x86_64                                                                                     6/6 
+
+Installed:
+  libbrotli-1.0.9-4.amzn2023.0.2.x86_64                 nodejs-1:18.20.6-1.amzn2023.0.2.x86_64           nodejs-docs-1:18.20.6-1.amzn2023.0.2.noarch             
+  nodejs-full-i18n-1:18.20.6-1.amzn2023.0.2.x86_64      nodejs-libs-1:18.20.6-1.amzn2023.0.2.x86_64      nodejs-npm-1:10.8.2-1.18.20.6.1.amzn2023.0.2.x86_64     
+
+Complete!
+[root@ip-172-31-12-121 AIBusinessInsights]# 
