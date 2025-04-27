@@ -323,6 +323,10 @@ function serveStatic(app2) {
 }
 
 // server/index.ts
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+var __filename = fileURLToPath(import.meta.url);
+var __dirname = dirname(__filename);
 var app = express2();
 app.use(express2.json());
 app.use(express2.urlencoded({ extended: false }));
